@@ -14,7 +14,7 @@ export default function Login() {
                     ></S.Input>
                     <S.Input
                         type="password"
-                        placeholder="Password"
+                        placeholder="Senha"
                     ></S.Input>
                     <S.Button>Entrar</S.Button>
                 </S.Form>

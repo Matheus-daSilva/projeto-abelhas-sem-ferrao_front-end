@@ -3,6 +3,7 @@ import GlobalStyles from "./styles/GlobalStyles"
 import Games from "./pages/Games"
 import Home from "./pages/Home"
 import Login from "./pages/SignIn"
+import Register from "./SignUp"
 
 export default function App() {
     return (
@@ -11,6 +12,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/signin" element={<Login />} />
+                <Route path="/signup" element={<Register />} />
                 <Route path="/games" element={<Games />} />
             </Routes>
         </BrowserRouter>
