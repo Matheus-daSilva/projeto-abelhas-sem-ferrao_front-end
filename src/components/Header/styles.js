@@ -73,8 +73,9 @@ export const Pages2 = styled.div`
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 200px;
+        width: 300px;
         margin-rigth: 20px;
+        cursor: pointer;
     }
 `
 

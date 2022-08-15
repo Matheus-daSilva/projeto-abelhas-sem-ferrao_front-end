@@ -24,7 +24,7 @@ export default function Header() {
                     <S.Pages2>
                         <S.P2>Home</S.P2>
                         <S.P2>Fórum</S.P2>
-                        <S.P2>Games</S.P2>
+                        <S.P2 onClick={() => navigate("/games")}>Games</S.P2>
                         <S.P2>{!storage ? "Login" : "Logout"}</S.P2>
                     </S.Pages2>
                 </S.Header>
@@ -46,7 +46,7 @@ export default function Header() {
                     <S.Pages>
                         <S.P>Home</S.P>
                         <S.P>Fórum</S.P>
-                        <S.P>Games</S.P>
+                        <S.P onClick={() => navigate("/games")}>Games</S.P>
                         <S.P>{!storage ? "Login" : "Logout"}</S.P>
                     </S.Pages>
                 </S.Body>
