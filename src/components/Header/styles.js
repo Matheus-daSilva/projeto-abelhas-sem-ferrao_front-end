@@ -56,6 +56,7 @@ export const Body = styled.main`
     display: flex;
     justify-content: center;
     background: #f7d88b;
+    z-index: 2;
 `
 
 export const Pages = styled.div`
@@ -83,6 +84,7 @@ export const P = styled.p`
     font-family: 'Varela Round', sans-serif;
     color: #ffffff;
     font-size: 18px;
+    margin-bottom: 30px;
 `
 
 export const P2 = styled.p`
