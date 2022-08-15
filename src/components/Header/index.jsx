@@ -1,7 +1,7 @@
 import * as S from "./styles"
 import { useNavigate } from "react-router-dom"
 import { FiAlignJustify, FiChevronDown } from "react-icons/fi"
-import abelha from "../../img/abelha.png"
+import abelha from "../../assets/img/abelha.png"
 import { useState } from "react"
 
 export default function Header() {
@@ -25,7 +25,7 @@ export default function Header() {
                         <S.P2>Home</S.P2>
                         <S.P2>Fórum</S.P2>
                         <S.P2 onClick={() => navigate("/games")}>Games</S.P2>
-                        <S.P2>{!storage ? "Login" : "Logout"}</S.P2>
+                        <S.P2 onClick={() => navigate("/signin")}>{!storage ? "Login" : "Logout"}</S.P2>
                     </S.Pages2>
                 </S.Header>
             </>
@@ -47,7 +47,7 @@ export default function Header() {
                         <S.P>Home</S.P>
                         <S.P>Fórum</S.P>
                         <S.P onClick={() => navigate("/games")}>Games</S.P>
-                        <S.P>{!storage ? "Login" : "Logout"}</S.P>
+                        <S.P onClick={() => navigate("/signin")}>{!storage ? "Login" : "Logout"}</S.P>
                     </S.Pages>
                 </S.Body>
             </>
