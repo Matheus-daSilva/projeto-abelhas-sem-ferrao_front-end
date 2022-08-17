@@ -19,4 +19,5 @@ export const Note = styled.p`
     text-align: center;
     font-size: 40px;
     weight: 400;
+    color: #464d59;
 `

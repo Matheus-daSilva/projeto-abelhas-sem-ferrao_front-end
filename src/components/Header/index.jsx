@@ -22,7 +22,7 @@ export default function Header() {
                         < FiAlignJustify color="#ffffff" size={30} />
                     </S.Icon>
                     <S.Pages2>
-                        <S.P2>Home</S.P2>
+                        <S.P2 onClick={() => navigate("/")}>Home</S.P2>
                         <S.P2>Fórum</S.P2>
                         <S.P2 onClick={() => navigate("/games")}>Games</S.P2>
                         <S.P2 onClick={() => navigate("/signin")}>{!storage ? "Login" : "Logout"}</S.P2>
