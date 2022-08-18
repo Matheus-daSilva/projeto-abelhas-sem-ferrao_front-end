@@ -49,7 +49,7 @@ export const Button = styled.button`
 
 export const P = styled.p`
     font-family: 'Varela Round', sans-serif;
-    color: #ffffff;
+    color: #464d59;
     font-size: 18px;
     margin-top: 13px;
 `

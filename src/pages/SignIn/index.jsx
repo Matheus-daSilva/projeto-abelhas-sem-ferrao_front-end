@@ -1,4 +1,5 @@
 import * as S from "./styles"
+import Header from "../../components/Header"
 import { useNavigate } from "react-router-dom"
 
 export default function Login() {
@@ -7,6 +8,7 @@ export default function Login() {
     return (
         <>
             <S.Container>
+                <Header></Header>
                 <S.Form>
                     <S.Input
                         type="email"
