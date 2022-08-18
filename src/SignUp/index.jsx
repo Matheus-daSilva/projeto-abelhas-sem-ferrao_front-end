@@ -70,7 +70,7 @@ export default function Register() {
             const {data} = response
             console.log(data)
             setLoading(false)
-            navigate("/")
+            navigate("/signin")
         })
         promisse.catch(() => {
             setLoading(false)
