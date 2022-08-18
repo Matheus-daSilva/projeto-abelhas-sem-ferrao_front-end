@@ -63,12 +63,10 @@ export default function Register() {
     async function register(event) {
         event.preventDefault()
         setLoading(true)
-        console.log(form)
 
         const promisse = axios.post("http://localhost:4000/signup", form)
         promisse.then(response => {
             const {data} = response
-            console.log(data)
             setLoading(false)
             navigate("/signin")
         })
