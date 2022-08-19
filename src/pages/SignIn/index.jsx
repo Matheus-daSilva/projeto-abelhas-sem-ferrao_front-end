@@ -47,6 +47,7 @@ export default function Login() {
         const promisse = axios.post("http://localhost:4000/signin", form)
         promisse.then(response => {
             const {data} = response
+            localStorage.setItem("token", data)
             setLoading(false)
             navigate("/forum")
         })

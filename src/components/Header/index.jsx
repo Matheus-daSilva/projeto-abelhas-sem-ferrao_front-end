@@ -23,9 +23,13 @@ export default function Header() {
                     </S.Icon>
                     <S.Pages2>
                         <S.P2 onClick={() => navigate("/")}>Home</S.P2>
-                        <S.P2>Fórum</S.P2>
+                        <S.P2 onClick={() => navigate("/forum")}>Fórum</S.P2>
                         <S.P2 onClick={() => navigate("/games")}>Games</S.P2>
-                        <S.P2 onClick={() => navigate("/signin")}>{!storage ? "Login" : "Logout"}</S.P2>
+                        <S.P2 onClick={() => {
+                            clearStorage()
+                            navigate("/signin")
+                        }
+                        }>{!storage ? "Login" : "Logout"}</S.P2>
                     </S.Pages2>
                 </S.Header>
             </>
@@ -44,14 +48,22 @@ export default function Header() {
                 </S.Header>
                 <S.Body>
                     <S.Pages>
-                        <S.P>Home</S.P>
-                        <S.P>Fórum</S.P>
+                        <S.P onClick={() => navigate("/")}>Home</S.P>
+                        <S.P onClick={() => navigate("/forum")}>Fórum</S.P>
                         <S.P onClick={() => navigate("/games")}>Games</S.P>
-                        <S.P onClick={() => navigate("/signin")}>{!storage ? "Login" : "Logout"}</S.P>
+                        <S.P onClick={() => {
+                            clearStorage()
+                            navigate("/signin")
+                        }
+                        }>{!storage ? "Login" : "Logout"}</S.P>
                     </S.Pages>
                 </S.Body>
             </>
         )
 
+    }
+
+    function clearStorage() {
+       localStorage.clear()
     }
 }

@@ -17,7 +17,13 @@ export const Note = styled.p`
     font-family: 'Nunito', sans-serif;
     display: flex;
     text-align: center;
-    font-size: 40px;
+    font-size: 30px;
     weight: 400;
+    width: 330px;
     color: #464d59;
+
+    @media (min-width: 768px) {
+        font-size: 40px;
+        width: 630px;
+    }
 `
