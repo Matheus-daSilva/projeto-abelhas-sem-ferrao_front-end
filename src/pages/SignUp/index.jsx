@@ -9,8 +9,7 @@ export default function Register() {
         username: "",
         email: "",
         password: "",
-        passwordConfirmation: "",
-        photo: ""
+        passwordConfirmation: ""
     })
     const navigate = useNavigate()
 
@@ -29,29 +28,22 @@ export default function Register() {
                         required
                         disabled={loading}
                         type="email"
-                        placeholder="Email"
+                        placeholder="E-mail"
                         onChange={(e) => setForm({...form, email: e.target.value})}
                     ></S.Input>
                     <S.Input
                         required
                         disabled={loading}
                         type="password"
-                        placeholder="Password"
+                        placeholder="Senha"
                         onChange={(e) => setForm({...form, password: e.target.value})}
                     ></S.Input>
                     <S.Input
                         required
                         disabled={loading}
                         type="password"
-                        placeholder="Confirmação"
+                        placeholder="Confirmação de senha"
                         onChange={(e) => setForm({...form, passwordConfirmation: e.target.value})}
-                    ></S.Input>
-                    <S.Input
-                        required
-                        disabled={loading}
-                        type="url"
-                        placeholder="Link de uma foto"
-                        onChange={(e) => setForm({...form, photo: e.target.value})}
                     ></S.Input>
                     <S.Button type="submit">Cadastrar</S.Button>
                 </S.Form>
