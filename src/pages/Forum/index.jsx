@@ -10,7 +10,6 @@ export default function Forum() {
     const [posts, setPosts] = useState([])
     const [loading, setLoading] = useState(false)
     const [form, setForm] = useState({
-        url: "",
         description: ""
     })
     const navigate = useNavigate()
@@ -26,7 +25,7 @@ export default function Forum() {
     useEffect(async () => {
         if (!storage) navigate("/signin")
 
-        const request = axios.get("http://localhost:4000/publications", config)
+        const request = axios.get(`${process.env.REACT_APP_API_URL}publications`, config)
         request.then(response => {
             const { data } = response
             console.log(data)
@@ -43,12 +42,6 @@ export default function Forum() {
                 <Header></Header>
                 <S.Form onSubmit={register}>
                     <S.Input
-                        type="url"
-                        placeholder="Link"
-                        disabled={loading}
-                        onChange={(e) => setForm({ ...form, url: e.target.value })}
-                    ></S.Input>
-                    <S.Input
                         type="text"
                         placeholder="No que você está pensando?"
                         disabled={loading}
@@ -57,7 +50,7 @@ export default function Forum() {
                     <S.Button
                         type="submit"
                         disabled={loading}
-                    >
+                        >
                         Enviar
                     </S.Button>
                 </S.Form>
@@ -67,8 +60,6 @@ export default function Forum() {
                             id={post.id}
                             userId={post.userId}
                             username={post.username}
-                            photo={post.photo}
-                            url={post.url}
                             description={post.description}
                             likes={post.likes}
                             comments={post.comments}
@@ -82,7 +73,7 @@ export default function Forum() {
         event.preventDefault()
         setLoading(true)
 
-        const promisse = axios.post("http://localhost:4000/publications", form, config)
+        const promisse = axios.post(`${process.env.REACT_APP_API_URL}publications`, form, config)
         promisse.then(response => {
             const { data } = response
             console.log(data)

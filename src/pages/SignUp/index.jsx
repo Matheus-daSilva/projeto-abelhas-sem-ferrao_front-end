@@ -56,7 +56,9 @@ export default function Register() {
         event.preventDefault()
         setLoading(true)
 
-        const promisse = axios.post("http://localhost:4000/signup", form)
+        console.log(process.env.REACT_APP_API_URL)
+
+        const promisse = axios.post(`${process.env.REACT_APP_API_URL}signup`, form)
         promisse.then(response => {
             const {data} = response
             setLoading(false)

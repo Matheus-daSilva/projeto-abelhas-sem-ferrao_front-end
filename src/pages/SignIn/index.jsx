@@ -44,10 +44,11 @@ export default function Login() {
         event.preventDefault()
         setLoading(true)
 
-        const promisse = axios.post("http://localhost:4000/signin", form)
+        const promisse = axios.post(`${process.env.REACT_APP_API_URL}signin`, form)
         promisse.then(response => {
             const {data} = response
-            localStorage.setItem("token", data)
+            localStorage.setItem("token", data.token)
+            localStorage.setItem("userId", data.userId)
             setLoading(false)
             navigate("/forum")
         })

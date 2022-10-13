@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const Container = styled.div`
     width: 100%;
-    background: #fff;
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,7 +25,7 @@ export const Text = styled.p`
 `
 
 export const Form = styled.form`
-    width: 100%;
+    width: 80%;
     min-height: 190px;
     display: flex;
     margin-top: 100px;
@@ -33,24 +33,31 @@ export const Form = styled.form`
     flex-direction: column;
     align-items: center;
     background-color: #fff;
+
+    @media (min-width: 768px) {
+        width: 611px;
+}
 `
 
-export const Input = styled.input`
+export const Input = styled.textarea`
     font-family: 'Nunito', sans-serif;
-    width: 340px;
-    height: 45px;
+    width: 100%;
+    min-height: 50px;
     border-radius: 15px;
     background-color: #ffffff;
     color: #464d59;
     margin-bottom: 13px;
     padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
     font-size: 20px;
     border: 0.5px solid #464d59;
+    wrap: hard;
 `
 
 export const Button = styled.button`
     font-family: 'Nunito', sans-serif;
-    width: 340px;
+    width: 100%;
     height: 45px;
     border: none;
     border-radius: 15px;
@@ -59,4 +66,8 @@ export const Button = styled.button`
     margin-bottom: 13px;
     text-align: center;
     font-size: 20px;
+    
+    @media (min-width: 768px) {
+        width: 611px;
+}
 `

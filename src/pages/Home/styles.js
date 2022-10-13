@@ -17,7 +17,7 @@ export const H1 = styled.h1`
     font-size: 36px;
     weight: 400;
     color: #464d59;
-    margin-top: 100px;
+    margin-top: 130px;
 `
 
 export const Text = styled.p`
