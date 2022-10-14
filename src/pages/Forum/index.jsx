@@ -76,7 +76,6 @@ export default function Forum() {
         const promisse = axios.post(`${process.env.REACT_APP_API_URL}publications`, form, config)
         promisse.then(response => {
             const { data } = response
-            console.log(data)
             setLoading(false)
         })
         promisse.catch(() => {
