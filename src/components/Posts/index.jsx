@@ -10,10 +10,20 @@ export default function Posts(props) {
   const userId = localStorage.getItem("userId")
   const storage = localStorage.getItem("token")
   const [update, setUpdate] = useState(false)
+  const [comment, setComment] = useState(false)
+  const [sendComment, setSendComment] = useState({
+    comment: "",
+    publicationId: Number(data.id)
+  })
   const [loading, setLoading] = useState(false)
+  const [like, setLike] = useState(false)
   const [form, setForm] = useState({
     description: ""
   })
+  const likesInfos = {
+    publicationId: null,
+    userId: userId
+  }
 
   const config = {
       headers: {
@@ -22,10 +32,75 @@ export default function Posts(props) {
   }
 
   // useEffect(() => {
-
+  //   const promisse = axios.post(`${process.env.REACT_APP_API_URL}likes`, likesInfos, config)
+  //   promisse.then(response => {
+  //     const { data } = response
+  //     console.log(data)
+  //   })
+  //   promisse.catch(() => {
+  //     warning()
+  //   })
   // },[])
-
-  if (update == true) {
+if (comment === true) {
+  return (
+        <>
+          <S.Container key={data.id}>
+            <S.Top>
+              <S.Username>{data.username}</S.Username>
+              <S.Icons>
+              </S.Icons>
+            </S.Top>
+            <S.Text>
+              <S.Description>{data.description}</S.Description>
+            </S.Text>
+            {data.comments.map((comment) => {
+              if(data.comments.length > 0) {
+                return (
+                  <>
+                    <S.Comment>
+                      <h3>{comment.username}</h3>
+                      <p>{comment.comment}</p>
+                    </S.Comment>
+                  </>
+                )
+              }
+            })}
+            <S.Form onSubmit={postComment}>
+              <S.Input
+                type="text"
+                autoFocus
+                placeholder="Digite o seu comentário"
+                disabled={loading}
+                onChange={(e) => setSendComment({ ...sendComment, comment: e.target.value })}
+              ></S.Input>
+            <S.Button  
+              type="submit" 
+              disabled={loading}
+              >
+              Enviar comentário
+            </S.Button>
+          </S.Form>
+            <S.Icons2>
+            <S.Div>
+              <CgBee size={20} />
+              <p>{data.likes.length}</p>
+              <p>Curtidas</p>
+            </S.Div>
+            <S.Div>
+              <FaRegComment size={20} onClick={() => {
+                setComment(!comment)
+                console.log("comment")
+                }}/>
+                <p>{data.comments.length}</p>
+                <p>Comentários</p>
+            </S.Div>
+            </S.Icons2>
+          </S.Container>
+        </>
+      );
+  }
+  
+  else if (update == true) {
     return (
       <>
         <S.Container key={data.id}>
@@ -73,8 +148,19 @@ export default function Posts(props) {
             <S.Description>{data.description}</S.Description>
           </S.Text>
           <S.Icons2>
-            <CgBee size={20} />
-            <FaRegComment size={20} />
+          <S.Div>
+              <CgBee size={20} />
+              <p>{data.likes.length}</p>
+              <p>Curtidas</p>
+            </S.Div>
+            <S.Div>
+              <FaRegComment size={20} onClick={() => {
+                setComment(!comment)
+                console.log("comment")
+                }}/>
+                <p>{data.comments.length}</p>
+                <p>Comentários</p>
+            </S.Div>
           </S.Icons2>
         </S.Container>
       </>
@@ -93,8 +179,19 @@ export default function Posts(props) {
             <S.Description>{data.description}</S.Description>
           </S.Text>
           <S.Icons2>
-            <CgBee size={20} />
-            <FaRegComment size={20} />
+          <S.Div>
+              <CgBee size={20} />
+              <p>{data.likes.length}</p>
+              <p>Curtidas</p>
+            </S.Div>
+            <S.Div>
+              <FaRegComment size={20} onClick={() => {
+                setComment(!comment)
+                console.log("comment")
+                }}/>
+                <p>{data.comments.length}</p>
+                <p>Comentários</p>
+            </S.Div>
           </S.Icons2>
         </S.Container>
       </>
@@ -125,7 +222,19 @@ export default function Posts(props) {
 
   }
 
+  function postComment() {
+    setLoading(true)
+    const promisse = axios.post(`${process.env.REACT_APP_API_URL}comment`, sendComment, config)
+    promisse.then(response => {
+      const { data } = response
+      console.log(data)
+    })
+    promisse.catch(() => {
+      warning()
+    })
+  }
+
   function warning() {
-    alert('Não foi possível executar a ação');
+    alert('Algo deu errado. Tente novamente');
   }
 }
