@@ -76,3 +76,41 @@ export const Icons2 = styled.div`
     justify-content: space-between;
 `
 
+export const Form = styled.form`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+
+`
+
+export const Input = styled.textarea`
+    font-family: 'Nunito', sans-serif;
+    width: 90%;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #464d59;
+    margin-bottom: 13px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    font-size: 15px;
+    border: 0.5px solid #464d59;
+    wrap: hard;
+`
+
+export const Button = styled.button`
+    font-family: 'Nunito', sans-serif;
+    width: 90%;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #f27281;
+    color: #fff;
+    margin-bottom: 13px;
+    font-size: 15px;
+    border: none;
+`
+
