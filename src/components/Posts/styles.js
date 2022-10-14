@@ -133,18 +133,18 @@ export const Comment = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 50px;
-    margin-right: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
     margin-top: 30px;
-    width: 85%;
-    border-left: 2px solid #464d59;
+    width: 100%;
 
     h3 {
         color: #000;  
         width: 100%;
         font-size: 16px;
         line-height: 1.5em;
-        margin-left: 10px;
+        padding-left: 10px;
+        border-left: 2px solid #464d59;
     }
 
     p {
@@ -152,7 +152,10 @@ export const Comment = styled.div`
         width: 100%;
         font-size: 14px;
         line-height: 1.5em;  
-        margin-left: 10px;
+        padding-left: 10px;
+        word-wrap: break-word;
+        word-break: break-word;
+        border-left: 2px solid #464d59;
     }
     
 `
