@@ -34,10 +34,7 @@ export default function Posts(props) {
 
 useEffect(() => {
   findLike()
-  console.log(liked) 
 }, [])
-
-console.log(liked, "fora do useeffect")
   
 if (comment === true) {
   return (

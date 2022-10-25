@@ -9,8 +9,10 @@
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^4.0.3",
+    "react-toastify": "^7.0.4",
     "styled-components": "^5.3.5",
-    "url-metadata": "^2.5.0"
+    "url-metadata": "^2.5.0",
+    "use-interval": "^1.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
