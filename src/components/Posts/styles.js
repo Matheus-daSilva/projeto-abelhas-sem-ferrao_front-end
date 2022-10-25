@@ -159,3 +159,8 @@ export const Comment = styled.div`
     }
     
 `
+
+export const Likes = styled.div`
+    width: 20px;
+    height: 20px;
+`

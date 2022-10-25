@@ -16,13 +16,14 @@ export default function Posts(props) {
     publicationId: Number(data.id)
   })
   const [loading, setLoading] = useState(false)
-  const [like, setLike] = useState(false)
+  const [liked, setLiked] = useState(false)
   const [form, setForm] = useState({
     description: ""
   })
+  
   const likesInfos = {
-    publicationId: null,
-    userId: userId
+    publicationId: data.id,
+    userId: Number(userId)
   }
 
   const config = {
@@ -31,16 +32,13 @@ export default function Posts(props) {
       }
   }
 
-  // useEffect(() => {
-  //   const promisse = axios.post(`${process.env.REACT_APP_API_URL}likes`, likesInfos, config)
-  //   promisse.then(response => {
-  //     const { data } = response
-  //     console.log(data)
-  //   })
-  //   promisse.catch(() => {
-  //     warning()
-  //   })
-  // },[])
+useEffect(() => {
+  findLike()
+  console.log(liked) 
+}, [])
+
+console.log(liked, "fora do useeffect")
+  
 if (comment === true) {
   return (
         <>
@@ -82,14 +80,15 @@ if (comment === true) {
           </S.Form>
             <S.Icons2>
             <S.Div>
-              <CgBee size={20} />
+            <S.Likes onClick={() => likePublication()}>
+              {liked ? <CgBee size={20} color="#f27281" /> : <CgBee size={20} />}
+            </S.Likes>
               <p>{data.likes.length}</p>
               <p>Curtidas</p>
             </S.Div>
             <S.Div>
               <FaRegComment size={20} onClick={() => {
                 setComment(!comment)
-                console.log("comment")
                 }}/>
                 <p>{data.comments.length}</p>
                 <p>Comentários</p>
@@ -139,7 +138,6 @@ if (comment === true) {
             <S.Icons>
               <AiFillEdit color="#464d59" size={20} onClick={() => {
                 setUpdate(true)
-                console.log("cliquei")
                 }}/>
               <AiFillDelete color="#464d59" size={20} onClick={() => deletePost()}/>
             </S.Icons>
@@ -149,14 +147,15 @@ if (comment === true) {
           </S.Text>
           <S.Icons2>
           <S.Div>
-              <CgBee size={20} />
+            <S.Likes onClick={() => likePublication()}>
+              {liked ? <CgBee size={20} color="#f27281" /> : <CgBee size={20} />}
+            </S.Likes>
               <p>{data.likes.length}</p>
               <p>Curtidas</p>
             </S.Div>
             <S.Div>
               <FaRegComment size={20} onClick={() => {
                 setComment(!comment)
-                console.log("comment")
                 }}/>
                 <p>{data.comments.length}</p>
                 <p>Comentários</p>
@@ -180,14 +179,15 @@ if (comment === true) {
           </S.Text>
           <S.Icons2>
           <S.Div>
-              <CgBee size={20} />
+            <S.Likes onClick={() => likePublication()}>
+              {liked ? <CgBee size={20} color="#f27281" /> : <CgBee size={20} />}
+            </S.Likes>
               <p>{data.likes.length}</p>
               <p>Curtidas</p>
-            </S.Div>
+          </S.Div>
             <S.Div>
               <FaRegComment size={20} onClick={() => {
                 setComment(!comment)
-                console.log("comment")
                 }}/>
                 <p>{data.comments.length}</p>
                 <p>Comentários</p>
@@ -202,7 +202,6 @@ if (comment === true) {
     const promisse = axios.delete(`${process.env.REACT_APP_API_URL}publications/${data.id}`, form, config)
     promisse.then(response => {
       const { data } = response
-      console.log(data)
     })
     promisse.catch(() => {
       warning()
@@ -227,11 +226,32 @@ if (comment === true) {
     const promisse = axios.post(`${process.env.REACT_APP_API_URL}comment`, sendComment, config)
     promisse.then(response => {
       const { data } = response
-      console.log(data)
     })
     promisse.catch(() => {
       warning()
     })
+  }
+
+  function likePublication() {
+    const promisse = axios.post(`${process.env.REACT_APP_API_URL}likes`, likesInfos, config)
+    promisse.then(response => {
+      const { data } = response
+      setLiked(!liked)
+    })
+    promisse.catch(() => {
+      warning()
+    })
+  }
+
+  function findLike() {
+    for (let i = 0; i < data.likes.length; i++) {
+      console.log(data.likes[i].userId)
+      console.log(userId)
+      if(Number(data.likes[i].userId) === Number(userId)) {
+        console.log("dentro do if")
+        setLiked(!liked)
+      }
+    }
   }
 
   function warning() {

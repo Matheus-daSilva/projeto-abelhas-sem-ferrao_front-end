@@ -71,6 +71,6 @@ export default function Register() {
     }
 
     function warning() {
-        alert('Não foi possível executar a ação');
+        alert('Verifique as credenciais. A senha deve ter no mínimo 8 caracteres');
       }
 }
