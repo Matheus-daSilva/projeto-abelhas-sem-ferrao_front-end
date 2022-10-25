@@ -52,12 +52,22 @@ export default function Forum() {
       if (observeAPI === null) {
         setObserveAPI(data.length);
       } else if (data.length > observeAPI) {
-        toast(`There are ${data.length - observeAPI} new posts`);
+        toast(`Há ${data.length - observeAPI} novos posts`, {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
         setObserveAPI(data.length);
         setLoading(true);
       }
     });
-    request.catch(() => {toast(`Não foi possível executar a ação`, {
+    request.catch(() => {
+      toast(`Não foi possível executar a ação`, {
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -66,7 +76,8 @@ export default function Forum() {
         draggable: true,
         progress: undefined,
         theme: "light",
-        })});
+      });
+    });
   }, 50000);
 
   if (posts.length === 0) {
@@ -142,7 +153,7 @@ export default function Forum() {
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
+      });
       setLoading(false);
     });
     promisse.catch(() => {
@@ -156,7 +167,7 @@ export default function Forum() {
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
+      });
     });
   }
 }
